@@ -86,8 +86,14 @@ L.Handler.PathDrag = L.Handler.extend({
         .fire('dragend', e);
   },
 
+  latLngToLayerPoint: function (latlng) {
+    // Same as map.latLngToLayerPoint, but without the round().
+    var projectedPoint = this._path._map.project(L.latLng(latlng));
+    return projectedPoint._subtract(this._path._map.getPixelOrigin());
+  },
+
   updateLatLng: function (latlng) {
-    var oldPoint = this._path._map.latLngToLayerPoint(latlng);
+    var oldPoint = this.latLngToLayerPoint(latlng);
     oldPoint._add(this._offset);
     var newLatLng = this._path._map.layerPointToLatLng(oldPoint);
     latlng.lat = newLatLng.lat;
