@@ -1,6 +1,6 @@
 {
   "name": "leaflet.path.drag",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Allow to drag Leaflet path",
   "main": "src/Path.Drag.js",
   "scripts": {
