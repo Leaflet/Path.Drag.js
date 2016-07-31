@@ -53,6 +53,21 @@ describe('L.Handler.PathDrag', function () {
         });
     });
 
+    it('should update bounds of a polyline', function (done) {
+        var latlngs = [p2ll(100, 100), p2ll(100, 200)];
+        layer = L.polyline(latlngs).addTo(this.map);
+        layer.dragging.enable();
+        var oldLat = layer._bounds._southWest.lat;
+        drag(100, 130, 20, 20, function () {
+            // Prosthetic-hand run the onStop before the
+            // dragend if sent.
+            window.setTimeout(function () {
+                assert.notEqual(oldLat, layer._bounds._southWest.lat);
+                done();
+            }, 10);
+        });
+    });
+
     it('should drag a multipolyline', function (done) {
         var latlngs = [
             [p2ll(100, 100), p2ll(100, 200)],
@@ -98,6 +113,21 @@ describe('L.Handler.PathDrag', function () {
         });
     });
 
+    it('should update bounds of a polygon', function (done) {
+        var latlngs = [[p2ll(100, 150), p2ll(150, 200), p2ll(200, 100)]];
+        layer = L.polygon(latlngs).addTo(this.map);
+        layer.dragging.enable();
+        var oldLat = layer._bounds._southWest.lat;
+        drag(150, 150, 20, 20, function () {
+            // Prosthetic-hand run the onStop before the
+            // dragend if sent.
+            window.setTimeout(function () {
+                assert.notEqual(oldLat, layer._bounds._southWest.lat);
+                done();
+            }, 10);
+        });
+    });
+
     it('should drag a rectangle', function (done) {
         var latlngs = [p2ll(100, 100), p2ll(200, 200)];
         layer = L.rectangle(latlngs).addTo(this.map);
@@ -107,6 +137,21 @@ describe('L.Handler.PathDrag', function () {
         drag(100, 130, 20, 20, function () {
             assert.notEqual(before, layer._latlngs[0][1].lat);
             done();
+        });
+    });
+
+    it('should update bounds of a rectangle', function (done) {
+        var latlngs = [p2ll(100, 100), p2ll(200, 200)];
+        layer = L.rectangle(latlngs).addTo(this.map);
+        layer.dragging.enable();
+        var oldLat = layer._bounds._southWest.lat;
+        drag(100, 130, 20, 20, function () {
+            // Prosthetic-hand run the onStop before the
+            // dragend if sent.
+            window.setTimeout(function () {
+                assert.notEqual(oldLat, layer._bounds._southWest.lat);
+                done();
+            }, 10);
         });
     });
 
@@ -125,7 +170,7 @@ describe('L.Handler.PathDrag', function () {
         var latlngs = [p2ll(100, 100), p2ll(100, 200)],
             called = 0,
             call = function () {called++;};
-        layer = L.polyline(latlngs).addTo(this.map),
+        layer = L.polyline(latlngs).addTo(this.map);
         layer.on('dragstart', call);
         layer.dragging.enable();
         assert.equal(called, 0);
@@ -139,7 +184,7 @@ describe('L.Handler.PathDrag', function () {
         var latlngs = [p2ll(100, 100), p2ll(100, 200)],
             called = 0,
             call = function () {called++;};
-        layer = L.polyline(latlngs).addTo(this.map),
+        layer = L.polyline(latlngs).addTo(this.map);
         layer.on('dragend', call);
         layer.dragging.enable();
         assert.equal(called, 0);
@@ -157,7 +202,7 @@ describe('L.Handler.PathDrag', function () {
         var latlngs = [p2ll(100, 100), p2ll(100, 200)],
             called = 0,
             call = function () {called++;};
-        layer = L.polyline(latlngs).addTo(this.map),
+        layer = L.polyline(latlngs).addTo(this.map);
         layer.on('drag', call);
         layer.dragging.enable();
         assert.notOk(called);

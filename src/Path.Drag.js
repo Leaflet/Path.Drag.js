@@ -82,6 +82,7 @@ L.Handler.PathDrag = L.Handler.extend({
   },
 
   _onDragEnd: function (e) {
+    if (this._path._bounds) this.resetBounds();
     this._path.fire('moveend')
         .fire('dragend', e);
   },
@@ -98,6 +99,13 @@ L.Handler.PathDrag = L.Handler.extend({
     var newLatLng = this._path._map.layerPointToLatLng(oldPoint);
     latlng.lat = newLatLng.lat;
     latlng.lng = newLatLng.lng;
+  },
+
+  resetBounds: function () {
+    this._path._bounds = new L.LatLngBounds();
+    this._path.eachLatLng(function (latlng) {
+      this._bounds.extend(latlng);
+    });
   }
 
 });
