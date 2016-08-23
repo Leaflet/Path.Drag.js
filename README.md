@@ -12,6 +12,8 @@ Add dragging capability to Leaflet path (Polygon, Polyline, Rectangle, Circle, C
 
 ## Installation
 
+**This library requires Leaflet version 1.0 or above**
+
 Include `Path.Drag.js` in your javascript files (after including Leaflet itself).
 
 It's available via NPM:
