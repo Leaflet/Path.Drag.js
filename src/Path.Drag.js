@@ -18,7 +18,7 @@ L.PathDraggable = L.Draggable.extend({
 
   _onDown: function (e) {
     var first = e.touches ? e.touches[0] : e;
-    this._startPoint = new L.Point(first.clientX, first.clientY);
+    this._startPoint = this._path._map.mouseEventToLayerPoint(first);
     if (this._canvas && !this._path._containsPoint(this._startPoint)) { return; }
     L.Draggable.prototype._onDown.call(this, e);
   }
