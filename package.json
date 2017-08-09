@@ -1,6 +1,6 @@
 {
   "name": "leaflet.path.drag",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Allow to drag Leaflet path",
   "main": "src/Path.Drag.js",
   "scripts": {
@@ -25,7 +25,7 @@
   "homepage": "https://github.com/Leaflet/Path.Drag.js#readme",
   "devDependencies": {
     "chai": "^3.5.0",
-    "leaflet": "^1.0.0-rc.2",
+    "leaflet": "^1.2.0",
     "mocha": "^2.5.3",
     "mocha-phantomjs-core": "^1.3.1",
     "phantomjs-prebuilt": "^2.1.7",

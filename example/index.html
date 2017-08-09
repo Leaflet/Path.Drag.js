@@ -3,8 +3,8 @@
 <head>
     <title>Path.Drag.js demo</title>
 
-    <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.1/dist/leaflet.css" />
-    <script src="https://npmcdn.com/leaflet@1.0.0-rc.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.2.0/dist/leaflet.css" />
+    <script src="https://npmcdn.com/leaflet@1.2.0/dist/leaflet.js"></script>
     <script src="../src/Path.Drag.js"></script>
     <style type="text/css">
         .my-div-icon {
@@ -36,7 +36,7 @@
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        L.polygon([[41.21, 9.42], [41.22, 9.40], [41.23, 9.40]], {draggable: true}).addTo(map);
+        L.polygon([[41.21, 9.42], [41.22, 9.40], [41.23, 9.40]], {draggable: true}).bindTooltip('drag me', {permanent: true, direction: 'top'}).addTo(map);
         L.polygon([[[41.20, 9.41], [41.20, 9.39], [41.21, 9.41]], [[41.18, 9.42], [41.17, 9.40], [41.19, 9.38]]], {color: 'Tomato',draggable: true}).addTo(map);
         L.circleMarker([41.20, 9.50], {color: 'Chocolate', radius: 12, draggable: true}).addTo(map);
         L.polyline([[41.20, 9.36], [41.205, 9.35], [41.19, 9.34]], {draggable: true}).addTo(map);

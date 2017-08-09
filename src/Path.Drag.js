@@ -77,8 +77,9 @@ L.Handler.PathDrag = L.Handler.extend({
 
     e.latlng = latlng;
     e.offset = this._offset;
-    path.fire('move', e)
-        .fire('drag', e);
+    path.fire('drag', e);
+    e.latlng = this._path.getCenter ? this._path.getCenter() : this._path.getLatLng();
+    path.fire('move', e);
   },
 
   _onDragEnd: function (e) {
