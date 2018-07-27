@@ -133,6 +133,9 @@ L.Path.addInitHook(function () {
     this.once('add', function () {
       this.dragging.enable();
     });
+    this.once('remove', function() {
+      this.dragging.disable()
+    });
   }
 
 });
